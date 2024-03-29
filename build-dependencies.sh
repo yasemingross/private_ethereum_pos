@@ -21,12 +21,6 @@ if [[ "$(printf '%s\n' "$min_go_version" "$current_go_version" | sort -V | head 
     exit 1
 fi
 
-#current_go_version=$(go version | awk '{print $3}')
-#if [[ "$current_go_version" != "$required_go_version" ]]; then
-#    echo "Error: Required Go version $required_go_version is not installed. Please install the correct version and try again."
-#    exit 1
-#fi
-
 # Check if Bazel is installed
 if ! command -v bazel &> /dev/null; then
     echo "Error: Bazel is not installed. Please install Bazel and try again."
@@ -55,23 +49,11 @@ DEPENDENCIES_DIR=./dependencies
 PRYSM_DIR=./prysm
 GETH_DIR=./go-ethereum
 
-# Prysm version 4.2.1
+# Prysm (version 4.2.1)
 PRYSM="https://github.com/prysmaticlabs/prysm"
-#go get .cmd/beacon-chain
-#go build -o=../beacon-chain .cmd/beacon-chain
-#BEACON_CHAIN_BINARY="https://github.com/prysmaticlabs/prysm/releases/download/v4.2.1/beacon-chain-v4.2.1-linux-amd64"
-#VALIDATOR_BINARY="https://github.com/prysmaticlabs/prysm/releases/download/v4.2.1/validator-v4.2.1-linux-amd64"
-#PRYSMCTL_BINARY="https://github.com/prysmaticlabs/prysm/releases/download/v4.2.1/prysmctl-v4.2.1-linux-amd64"
 
-# Go-Ethereum version x.x.x
+# Go-Ethereum (version x.x.x)
 GETH="https://github.com/ethereum/go-ethereum"
-
-# todo: Reihenfolge klören mit download der binaries und in welchen Ordner und ausführen und so
-
-# TODO: checken ob die notwendigen Programme installiert sind
-go version # go version go1.22.0 linux/amd64
-
-bazel version # Bazelisk version: v1.19.0 ...
 
 ( mkdir -p $DEPENDENCIES_DIR && cd $DEPENDENCIES_DIR )
 
